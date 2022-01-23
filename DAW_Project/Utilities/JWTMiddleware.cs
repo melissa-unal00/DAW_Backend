@@ -34,13 +34,4 @@ namespace DAW_Project.Utilities
         }
 
     }
-
-   /* public static class RequestCultureMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseJWTMiddleware(
-            this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<JWTMiddleware>();
-        }
-    }*/
 }

@@ -31,7 +31,6 @@ namespace DAW_Project
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
@@ -64,7 +63,6 @@ namespace DAW_Project
             services.AddAutoMapper(typeof(Startup));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/[controller]"), appBuilder =>
@@ -72,12 +70,11 @@ namespace DAW_Project
                 appBuilder.UseMiddleware<JWTMiddleware>();
             });
 
-            // global cors policy
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials()); // allow credentials
+                .SetIsOriginAllowed(origin => true) 
+                .AllowCredentials()); 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -87,7 +84,6 @@ namespace DAW_Project
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
