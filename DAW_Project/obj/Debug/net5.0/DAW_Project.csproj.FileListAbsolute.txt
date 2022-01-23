@@ -73,3 +73,6 @@ D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\bin\Debug\net5.
 D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\obj\Debug\net5.0\DAW_Project.MvcApplicationPartsAssemblyInfo.cs
+D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\bin\Debug\net5.0\AutoMapper.dll
+D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Coding Stuff\VS 2019\VS 2019 Projects\DAW_Project\DAW_Project\bin\Debug\net5.0\BCrypt.Net-Next.dll

@@ -1,4 +1,8 @@
 using DAW_Project.Data;
+using DAW_Project.Repositories.UserRepository;
+using DAW_Project.Services.UserService;
+using DAW_Project.Utilities;
+using DAW_Project.Utilities.JWTUtilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,8 +36,16 @@ namespace DAW_Project
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DAW_Project", Version = "v1" });
             });
 
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
+
             services.AddDbContext<DAW_ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddScoped<IJWTUtilities, JWTUtilities>();
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
