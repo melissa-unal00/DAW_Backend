@@ -22,6 +22,10 @@ namespace DAW_Project.Profiles
             CreateMap<RegisterCategoryDTO, Category>();
             CreateMap<Category, RespondCategoryDTO>();
 
+            //Product
+            CreateMap<RegisterProductDTO, Product>();
+            CreateMap<Product, RespondProductDTO>();
+
         }
 
     }

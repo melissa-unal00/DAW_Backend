@@ -1,7 +1,9 @@
 using DAW_Project.Data;
 using DAW_Project.Repositories.CategoryRepository;
+using DAW_Project.Repositories.ProductRepository;
 using DAW_Project.Repositories.UserRepository;
 using DAW_Project.Services.CategoryService;
+using DAW_Project.Services.ProductService;
 using DAW_Project.Services.UserService;
 using DAW_Project.Utilities;
 using DAW_Project.Utilities.JWTUtilities;
@@ -32,6 +34,7 @@ namespace DAW_Project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllersWithViews();
             services.AddSwaggerGen(c =>
             {
@@ -53,12 +56,28 @@ namespace DAW_Project
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICategoryService, CategoryService>();
 
+            //product
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
+
+
             services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/[controller]"), appBuilder =>
+            {
+                appBuilder.UseMiddleware<JWTMiddleware>();
+            });
+
+            // global cors policy
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
