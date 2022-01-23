@@ -1,5 +1,7 @@
 using DAW_Project.Data;
+using DAW_Project.Repositories.CategoryRepository;
 using DAW_Project.Repositories.UserRepository;
+using DAW_Project.Services.CategoryService;
 using DAW_Project.Services.UserService;
 using DAW_Project.Utilities;
 using DAW_Project.Utilities.JWTUtilities;
@@ -42,8 +44,14 @@ namespace DAW_Project
             services.AddDbContext<DAW_ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            //user
             services.AddScoped<IJWTUtilities, JWTUtilities>();
             services.AddScoped<IUserService, UserService>();
+
+            //category
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICategoryService, CategoryService>();
 
             services.AddAutoMapper(typeof(Startup));
         }

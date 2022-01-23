@@ -18,6 +18,10 @@ namespace DAW_Project.Profiles
             CreateMap<User, LoginUserDTO>();
             CreateMap<User, TokenUserDTO>();
 
+            //Category
+            CreateMap<RegisterCategoryDTO, Category>();
+            CreateMap<Category, RespondCategoryDTO>();
+
         }
 
     }
