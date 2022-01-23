@@ -29,7 +29,7 @@ namespace DAW_Project.Utilities.JWTUtilities
                 new
                     SecurityTokenDescriptor //descriem cum o sa functioneze tokenul nostru, cum o sa se genereze, ce hashing algoritm o sa foloseasca, ce o sa contina
                 {
-                    Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()), new Claim("username", user.Username.ToString()), new Claim("firstname", user.FirstName.ToString()), new Claim("lastname", user.LastName.ToString()) }), //aici o sa punem id ul userului
+                    Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()), new Claim("username", user.Username.ToString()), new Claim("firstname", user.FirstName.ToString()), new Claim("lastname", user.LastName.ToString()), new Claim("birthday", user.Birthday.ToString()), new Claim("gender", user.Gender.ToString()) }),
                     Expires = DateTime.UtcNow.AddDays(10), //cand expira tokenul
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(appPrivateKey),
                             SecurityAlgorithms

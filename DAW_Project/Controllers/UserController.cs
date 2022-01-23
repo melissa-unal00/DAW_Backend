@@ -40,7 +40,7 @@ namespace DAW_Project.Controllers
         }
 
         //GET
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet("byId")]
         public IActionResult GetByIdWithDto(Guid Id)
         {
